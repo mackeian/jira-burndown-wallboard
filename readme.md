@@ -6,6 +6,9 @@ weekend days.
 
 ![A Jira burndown](example_burndown.png)
 
+Requirements:
+ * Curl
+
 Powered by these awesome javascript frameworks:
  * [JQuery](http://www.jquery.com)
  * [Flotchart](http://www.flotcharts.org/)
@@ -21,6 +24,7 @@ Setting it up
 
 Running the download script
 -------------------------
+Make sure you have CURL installed.
 Run the ./download.sh and it will retrieve the sprint data from JIRA and put it on disk. Open the public_html/index.html to view the sprint burndown.
 Put the script on a cronjob or scheduled task so it will be updated daily.
 
