@@ -51,7 +51,7 @@ var JiraBurndown = (function() {
         }
     };
     
-    var debug = false;
+    var debug = true;
     function logme(message) {
         if (debug)
             console.log(message);
@@ -115,7 +115,7 @@ var JiraBurndown = (function() {
             var points = 0;
             try {
                 points = parseFloat(issue['fields'][_points_fieldname]);
-                if (points == NaN) {
+                if (isNaN(points)) {
                     points = 0;
                 }
             } catch (err) {
