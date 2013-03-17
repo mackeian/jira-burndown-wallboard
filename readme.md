@@ -4,6 +4,8 @@ Jira Burndown Wall
 A simple JIRA Burndown Wall for anyone using the new boards and Greenhopper 6.1. We got tired of waiting for a Wallboard plugin so we put this one together quickly. It gives you the ability to visualise the team effort on a daily (weekends excluded).
 weekend days.
 
+![A Jira burndown](example_burndown.png)
+
 Powered by these awesome javascript frameworks:
  * [JQuery](http://www.jquery.com)
  * [Flotchart](http://www.flotcharts.org/)
