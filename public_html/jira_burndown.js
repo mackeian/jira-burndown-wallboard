@@ -51,7 +51,7 @@ var JiraBurndown = (function() {
         }
     };
     
-    var debug = true;
+    var debug = false;
     function logme(message) {
         if (debug)
             console.log(message);
