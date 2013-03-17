@@ -1,0 +1,9 @@
+# JIRA Authentication user
+JIRA_USER=""
+JIRA_PWD=""
+
+# JIRA Sprint and project field details
+SPRINT_ID=1
+SPRINT_FIELDNAME="customfield_XXXXX"
+POINTS_FIELDNAME="customfield_XXXXX"
+JIRA_HOST="https://mycompanyXXXXX.atlassian.net"

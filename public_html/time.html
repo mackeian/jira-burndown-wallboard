@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Lanterna Online Burndown</title>
+    <link href="layout.css" rel="stylesheet" type="text/css">
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../excanvas.min.js"></script><![endif]-->
+        <script language="javascript" type="text/javascript" src="burndown.js"></script>
+    <script language="javascript" type="text/javascript" src="jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="jquery.flot.js"></script>
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            text-align: center;
+        }
+        #container {
+            padding-left: 10px;
+            padding-top: 20px;
+            text-align: left;
+            margin: 0 auto;
+            width: 900px;
+        }
+        #container h1 {
+            padding-left: 30px;
+        }
+        #placeholder {
+            width:900px;
+            height:500px;
+        }
+    </style>
+ </head>
+    <body>
+    <div id="container">
+    <h1>Lanterna Online - Daily Burndown chart</h1>
+
+    <div id="placeholder"></div>
+    </div>
+<script type="text/javascript" id="source">
+
+$(function () {    
+    $.plot($("#placeholder"), [burndown_values, line], 
+    { 
+        xaxis: {
+            tickFormatter: function(number, object) {
+                tick_label = ''
+                if (sprint_dates[number] != undefined) {
+                    tick_label = tick_label + sprint_weekdays[number] + '<br/>'  + sprint_dates[number];
+                }
+                else {
+                    tick_label = 'Start';
+                }
+                return tick_label;
+            }
+        }
+        , 
+        yaxis: {min: 0} 
+    });
+    
+    function timedRefresh(timeoutPeriod) {
+    	setTimeout("location.reload(true);",timeoutPeriod);
+    }
+    timedRefresh(600000); //60s * 10 = 10 minutes
+
+});
+</script>
+
+ </body>
+</html>
