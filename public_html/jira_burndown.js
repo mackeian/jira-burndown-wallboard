@@ -186,7 +186,8 @@ var JiraBurndown = (function() {
                 logme('Adding [' + actual_number_of_sprint_days + '] = ' + date
                     + ' - ' + _sprint_date_info[date]['points_left'] + 'p');
                 // Only add burndown up until today
-                if (date.getTime() <= _today.getTime()) {
+                if (date.getTime() + one_day_in_ms < _today.getTime()) {
+                    logme('Adding to bdv: ' + actual_number_of_sprint_days + ': pointsleft ' + _sprint_date_info[date]['points_left']);
                     burndown_values.push([actual_number_of_sprint_days, _sprint_date_info[date]['points_left']]);
                 }
             }
