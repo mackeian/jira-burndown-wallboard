@@ -53,6 +53,9 @@
         { 
             xaxis: {
                 tickFormatter: function(number, object) {
+                    // Only labels for whole numbers
+                    if(number != Math.round(number)) return '';
+                    
                     tick_label = ''
                     if (sprint_dates[number] != undefined) {
                         date = sprint_dates[number];
