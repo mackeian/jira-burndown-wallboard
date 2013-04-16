@@ -3,6 +3,7 @@ var JiraBurndown = (function() {
     var _jiradata;
     var _date_format_length=10; // Jira date format: '2013-01-01'
     var _sprint_info;
+    var _sprint_name;
     var _sprint_date_info;
     var _sprint_fieldname;
     var _points_fieldname;
@@ -47,7 +48,9 @@ var JiraBurndown = (function() {
             sprint_days: _number_of_sprint_days,
             sprint_dates: _sprint_dates,
             burndown_values: _burndown_values,
-            formatDate: formatDate
+            formatDate: formatDate,
+	    title: _jiradata.title,
+	    sprint_name: _sprint_name
         }
     };
     
@@ -70,6 +73,12 @@ var JiraBurndown = (function() {
      * Puts the sprint start date in _start_date
      */
     function setStartDate() {
+	var sprint_name_key = "name=";
+	var sprint_name_index = _sprint_info.indexOf(sprint_name_key);
+	var sprint_name_end_index = _sprint_info.indexOf(",", sprint_name_index);
+	var sprint_name = _sprint_info.substring(sprint_name_index + sprint_name_key.length, sprint_name_end_index);
+	_sprint_name = sprint_name; 
+
         var start_date_key = "startDate=";
         var start_date_index = _sprint_info.indexOf(start_date_key);
         var start_date_string = _sprint_info.substring(start_date_index+start_date_key.length, 

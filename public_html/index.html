@@ -31,7 +31,7 @@
 </head>
 <body>
     <div id="container">
-    <h1>Daily Burndown chart</h1>
+    <h1 id="page_title">Daily Burndown chart</h1>
 
     <div id="placeholder"></div>
     </div>
@@ -42,7 +42,9 @@
         total_points = jb.total_points;
         sprint_days = jb.sprint_days;
         sprint_dates = jb.sprint_dates;
+	sprint_name = jb.sprint_name;
         burndown_values = jb.burndown_values;
+	$('#page_title').html(jb.title + ' - ' + sprint_name);	
     
         // Adding base line
         var line = [[0, total_points], [sprint_days, 0]];

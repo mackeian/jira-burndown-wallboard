@@ -1,6 +1,7 @@
 # JIRA Authentication user
 JIRA_USER=""
 JIRA_PWD=""
+TITLE="Our Online Burndown Chart"
 
 # JIRA Sprint and project field details
 SPRINT_ID=1
