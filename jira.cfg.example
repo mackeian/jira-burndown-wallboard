@@ -6,4 +6,5 @@ JIRA_PWD=""
 SPRINT_ID=1
 SPRINT_FIELDNAME="customfield_XXXXX"
 POINTS_FIELDNAME="customfield_XXXXX"
+NON_WORKING_DATES="['2013-01-01']" 
 JIRA_HOST="https://mycompanyXXXXX.atlassian.net"

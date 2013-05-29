@@ -1,5 +1,5 @@
 var JiraBurndown = (function() {
-    // Data from JIRA
+    // Data from JIRA, and settings
     var _jiradata;
     var _date_format_length=10; // Jira date format: '2013-01-01'
     var _sprint_info;
@@ -8,6 +8,7 @@ var JiraBurndown = (function() {
     var _points_fieldname;
     var one_day_in_ms = 3600*24*1000;
     var _today;
+    var _non_working_dates = [];
 
     // Calculated data
     var _total_points = 0.0;
@@ -64,6 +65,10 @@ var JiraBurndown = (function() {
     function setFieldNameInfo() {
         _sprint_fieldname = _jiradata.settings['sprint_fieldname'];
         _points_fieldname = _jiradata.settings['points_fieldname'];
+        logme('NON WORKING: ' + _jiradata.settings['non_working_dates']);
+        if (_jiradata.settings['non_working_dates']) {
+            _non_working_dates = _jiradata.settings['non_working_dates'];
+        }
     };
     
     /*
@@ -180,7 +185,9 @@ var JiraBurndown = (function() {
             _sprint_date_info[date]['points_left'] = points_left;
             
             var is_weekend = (date.getDay() == 6) || (date.getDay() == 0);
-            if (!is_weekend) {
+            var formatted_date = formatDate(date);
+            var is_non_working_day = (_non_working_dates.indexOf(formatted_date) >= 0)
+            if (!is_weekend && !is_non_working_day) {
                 actual_sprint_dates.push(date);
                 actual_number_of_sprint_days++;
                 logme('Adding [' + actual_number_of_sprint_days + '] = ' + date
